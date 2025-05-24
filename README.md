@@ -1,6 +1,6 @@
-# 🧪 casual-mcp + Blender MCP Example
+# 🧪 Casual MCP + Blender MCP Example
 
-This repository provides a working example of using [casual-mcp](https://pypi.org/project/casual-mcp) with the [Blender MCP Server](https://github.com/ahujasid/blender-mcp).
+This repository provides a working example of using [Casual MCP](https://pypi.org/project/casual-mcp) with the [Blender MCP Server](https://github.com/ahujasid/blender-mcp).
 
 It demonstrates how to:
 - Configure OpenAI models (or any compatible API)
@@ -11,7 +11,7 @@ It demonstrates how to:
 
 ## 🚀 How to Run
 
-1. **Install the dependencies**
+### 1. **Install the dependencies**
 
 Make sure you have [`uv`](https://github.com/astral-sh/uv) installed.
 
@@ -66,6 +66,14 @@ Content-Type: application/json
 ```
 
 The assistant will invoke Blender tool functions as needed.
+
+### Sessions
+
+The `session_id` is optional, but by adding it Casual MCP will supply the previous messages from the session as context to the LLM. Just change the value to start a fresh session.
+
+To get all the messages from the session (good for seeing tools the LLM calls and the results) you can do a GET request against `/chat/session/{session_id}`
+
+Sessions are stored in memory, any server restart will clear it.
 
 
 ## ⚙️ Configuration
