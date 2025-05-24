@@ -80,27 +80,6 @@ Sessions are stored in memory, any server restart will clear it.
 
 This project uses a `config.json` file to declare models and servers.
 
-### ✨ Example: `config.json`
-
-```json
-{
-  "namespaced_tools": false,
-  "models": {
-    "gpt-4o-mini": {
-      "provider": "openai",
-      "model": "gpt-4o-mini",
-      "template": "blender"
-    }
-  },
-  "servers": {
-    "blender": {
-      "type": "uvx",
-      "package": "blender-mcp"
-    }
-  }
-}
-```
-
 ### ➕ Add Your Own Models
 
 To add your own OpenAI-compatible models:
@@ -114,7 +93,9 @@ To add your own OpenAI-compatible models:
 }
 ```
 
-Make sure the `template` matches a file in `prompt-templates/` (e.g., `blender.j2`).
+You can read more about the config file structure [here](https://github.com/AlexStansfield/casual-mcp?tab=readme-ov-file#%EF%B8%8F-configuration-file-configjson)
+
+Make sure the `template` matches a file in `prompt-templates/` (e.g., `blender.j2`) in order for the model to use the supplied system template.
 
 
 ## 🧩 Prompt Template
