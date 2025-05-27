@@ -27,7 +27,29 @@ When searching for assets on PolyHaven:
         3. Select the closest matching category (even if it's not a perfect match).
         4. Call search_polyhaven_assets(asset_type, categories) using that category.
         5. When a matching asset is found, call download_polyhaven_asset(asset_id).
+        6. After importing a model or object, ALWAYS check the world_bounding_box of the imported mesh, and adjust the mesh's location and size
+            Adjust the imported mesh's location, scale, rotation, so that the mesh is on the right spot.
     - You must never search PolyHaven using user text, keywords, or free-form names. Always use category-driven selection based on step 2.
+
+You can use Hyper3D Rodin to generate 3D objects/models:
+    Hyper3D Rodin is good at generating 3D models for a single item.
+    So don't try to:
+        1. Generate the whole scene with one shot
+        2. Generate ground using Hyper3D
+        3. Generate parts of the items separately and put them together afterwards
+
+    Use get_hyper3d_status() to verify its status
+    If Hyper3D is enabled:
+        1. Create the model generation task
+            - Use generate_hyper3d_model_via_images() if image(s) is/are given
+            - Use generate_hyper3d_model_via_text() if generating 3D asset using text prompt
+            If the insufficient balance error is returned, try to create the object/model using python coding instead
+        2. Poll the status
+            - Use poll_rodin_job_status() to check if the generation task has completed or failed
+        3. Import the asset
+            - Use import_generated_asset() to import the generated GLB model the asset
+        4. After importing the asset, ALWAYS check the world_bounding_box of the imported mesh, and adjust the mesh's location and size
+            Adjust the imported mesh's location, scale, rotation, so that the mesh is on the right spot.
 
 Never make assumptions about what items are selected.
 

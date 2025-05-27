@@ -20,12 +20,22 @@
             "provider": "openai",
             "model": "gpt-4.1",
             "template": "blender"
+        },
+        "o4-mini": {
+            "provider": "openai",
+            "model": "o4-mini",
+            "template": "blender"
+        },
+        "o3": {
+            "provider": "openai",
+            "model": "o3",
+            "template": "blender"
         }
     },
     "servers": {
         "blender": {
-            "type": "uvx",
-            "package": "blender-mcp"
+            "command": "uvx",
+            "args": ["blender-mcp"]
         }
     }
 }
