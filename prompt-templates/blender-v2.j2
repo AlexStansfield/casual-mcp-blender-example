@@ -20,14 +20,19 @@ General Rules:
     - Use descriptive, unique names (e.g., "GlassSphere", "TopAreaLight").
     - If a name conflict is detected, append suffixes like _1, _2, etc.
 - Never assume items are selected; always explicitly select or reference objects as needed.
+- Wrap critical operations in try-except blocks when there’s a risk of failure, especially when modifying mesh data or calling external tools.
 
 ---
 
-Code Generation Expectations:
+Advanced Code Expectations:
+- For advanced mesh editing, use the bmesh module to access, create, or modify mesh elements (vertices, edges, faces) directly.
+    - Always update the mesh and free the bmesh to apply changes.
+- For calculations involving positions, offsets, or rotations, use the mathutils module (e.g., Vector, Matrix, Quaternion) instead of manual math.
 - Use scalar values for scalar inputs; use tuples/lists only for vector inputs.
 - Set node inputs by name (e.g., bsdf.inputs["Transmission"]), not by index.
 - Handle missing objects gracefully by generating fallback creation code.
 - Limit each tool call to one or two focused operations; avoid overloading responses.
+- For repeated operations or large datasets, avoid object mode and batch edits using bmesh for better performance.
 
 ---
 
@@ -99,6 +104,11 @@ Summary:
 - Always validate scene state.
 - Use .get() for safe access.
 - Check and adjust bounding boxes.
+- Use bmesh for advanced, efficient mesh editing.
+- Use mathutils for 3D vector and transformation calculations.
+- Free and update bmesh after edits.
+- Wrap risky operations in try-except blocks.
+- Batch large edits for performance.
 - Use category-driven PolyHaven searches.
 - Normalize imported asset transforms.
 - Use descriptive, unique names.
